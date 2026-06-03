@@ -40,3 +40,33 @@ offset_left = 890.0
 offset_top = 540.0
 offset_right = 1110.0
 offset_bottom = 600.0
+
+[node name="ResultScreen" type="CanvasLayer" parent="." unique_id=665321198]
+
+[node name="Background" type="ColorRect" parent="ResultScreen" unique_id=554994540]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0, 0, 0, 0.003921569)
+
+[node name="ResultLabel" type="Label" parent="ResultScreen" unique_id=1066889541]
+offset_left = 240.0
+offset_top = 300.0
+offset_right = 1040.0
+offset_bottom = 500.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ExplanationLabel" type="Label" parent="ResultScreen" unique_id=1729735267]
+offset_left = 240.0
+offset_top = 300.0
+offset_right = 1040.0
+offset_bottom = 500.0
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="NextButton" type="Button" parent="ResultScreen" unique_id=653980791]
+offset_left = 490.0
+offset_top = 620.0
+offset_right = 790.0
+offset_bottom = 680.0
+text = "Next Case"

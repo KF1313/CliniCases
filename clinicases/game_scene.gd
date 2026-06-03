@@ -3,11 +3,13 @@ extends Node2D
 var current_case = {
 	"image": "",
 	"correct": "Atrial Fibrillation",
-	"answers": ["Atrial Fibrillation", "Sinus Tachycardia", "Atrial Flutter", "Normal Sinus Rhythm"]
+	"answers": ["Atrial Fibrillation", "Sinus Tachycardia", "Atrial Flutter", "Normal Sinus Rhythm"],
+	"explanation": "Atrial Fibrillation is identified by the absence of distinct P waves and an irregularly irregular rhythm. The ventricular rate is variable and the baseline shows chaotic fibrillatory waves."
 }
 
 var time_left = 30.0
 var time_expired = false
+var answered = false
 
 func _ready():
 	$Timer.text = "30s"
@@ -20,21 +22,39 @@ func _ready():
 	$Answer2.pressed.connect(_on_answer_pressed.bind(current_case.answers[1]))
 	$Answer3.pressed.connect(_on_answer_pressed.bind(current_case.answers[2]))
 	$Answer4.pressed.connect(_on_answer_pressed.bind(current_case.answers[3]))
+	
+	$ResultScreen.visible = false
+	$ResultScreen/NextButton.pressed.connect(_on_next_pressed)
 
 func _process(delta):
-	if time_left > 0:
+	if time_left > 0 and not answered:
 		time_left -= delta
 		$Timer.text = str(int(time_left)) + "s"
-	elif not time_expired:
+	elif not time_expired and not answered:
 		time_expired = true
 		$Timer.text = "0s"
 		_time_up()
 
 func _time_up():
-	print("Time's up!")
+	show_result(false, "Time's up!")
 
 func _on_answer_pressed(answer):
+	if answered:
+		return
+	answered = true
 	if answer == current_case.correct:
-		print("Correct!")
+		show_result(true, "Correct!")
 	else:
-		print("Wrong! Correct answer: " + current_case.correct)
+		show_result(false, "Incorrect. The answer was: " + current_case.correct)
+
+func show_result(correct, message):
+	$ResultScreen.visible = true
+	$ResultScreen/ResultLabel.text = message
+	$ResultScreen/ExplanationLabel.text = current_case.explanation
+
+func _on_next_pressed():
+	$ResultScreen.visible = false
+	answered = false
+	time_expired = false
+	time_left = 30.0
+	$Timer.text = "30s"
