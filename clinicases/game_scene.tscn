@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cdr17hukvwnbd"]
 
 [ext_resource type="Script" uid="uid://dtiwujg1diw3i" path="res://game_scene.gd" id="1_mlf6e"]
+[ext_resource type="Texture2D" uid="uid://dqh322uhywui5" path="res://afib.jpg" id="2_po0ka"]
 
 [node name="GameScene" type="Node2D" unique_id=1570301299]
 script = ExtResource("1_mlf6e")
@@ -9,7 +10,8 @@ script = ExtResource("1_mlf6e")
 offset_left = 140.0
 offset_top = 80.0
 offset_right = 1140.0
-offset_bottom = 480.0
+offset_bottom = 380.0
+texture = ExtResource("2_po0ka")
 
 [node name="Timer" type="Label" parent="." unique_id=1357515648]
 offset_left = 1100.0
@@ -44,31 +46,34 @@ offset_bottom = 600.0
 [node name="ResultScreen" type="CanvasLayer" parent="." unique_id=665321198]
 
 [node name="Background" type="ColorRect" parent="ResultScreen" unique_id=554994540]
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0, 0, 0, 0.003921569)
 
 [node name="ResultLabel" type="Label" parent="ResultScreen" unique_id=1066889541]
-offset_left = 240.0
-offset_top = 300.0
-offset_right = 1040.0
-offset_bottom = 500.0
+offset_left = 540.0
+offset_top = 150.0
+offset_right = 740.0
+offset_bottom = 210.0
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ExplanationLabel" type="Label" parent="ResultScreen" unique_id=1729735267]
 offset_left = 240.0
-offset_top = 300.0
+offset_top = 250.0
 offset_right = 1040.0
-offset_bottom = 500.0
+offset_bottom = 450.0
 horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="NextButton" type="Button" parent="ResultScreen" unique_id=653980791]
 offset_left = 490.0
-offset_top = 620.0
+offset_top = 560.0
 offset_right = 790.0
-offset_bottom = 680.0
+offset_bottom = 620.0
 text = "Next Case"
 
 [node name="ScoreLabel" type="Label" parent="." unique_id=1282499309]

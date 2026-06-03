@@ -1,7 +1,7 @@
 extends Node2D
 
 var current_case = {
-	"image": "",
+	"image": "afib.jpg",
 	"correct": "Atrial Fibrillation",
 	"answers": ["Atrial Fibrillation", "Sinus Tachycardia", "Atrial Flutter", "Normal Sinus Rhythm"],
 	"explanation": "Atrial Fibrillation is identified by the absence of distinct P waves and an irregularly irregular rhythm. The ventricular rate is variable and the baseline shows chaotic fibrillatory waves."
@@ -52,11 +52,23 @@ func _on_answer_pressed(answer):
 		show_result(false, "Incorrect. The answer was: " + current_case.correct)
 
 func show_result(correct, message):
+	$ECGImage.visible = false
+	$Answer1.visible = false
+	$Answer2.visible = false
+	$Answer3.visible = false
+	$Answer4.visible = false
+	$Timer.visible = false
 	$ResultScreen.visible = true
 	$ResultScreen/ResultLabel.text = message
 	$ResultScreen/ExplanationLabel.text = current_case.explanation
 
 func _on_next_pressed():
+	$ECGImage.visible = true
+	$Answer1.visible = true
+	$Answer2.visible = true
+	$Answer3.visible = true
+	$Answer4.visible = true
+	$Timer.visible = true
 	$ResultScreen.visible = false
 	answered = false
 	time_expired = false
