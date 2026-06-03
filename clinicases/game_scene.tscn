@@ -70,3 +70,10 @@ offset_top = 620.0
 offset_right = 790.0
 offset_bottom = 680.0
 text = "Next Case"
+
+[node name="ScoreLabel" type="Label" parent="." unique_id=1282499309]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 60.0
+offset_bottom = 43.0
+text = "Score: 0"

@@ -10,9 +10,11 @@ var current_case = {
 var time_left = 30.0
 var time_expired = false
 var answered = false
+var score = 0
 
 func _ready():
 	$Timer.text = "30s"
+	$ScoreLabel.text = "Score: 0"
 	$Answer1.text = current_case.answers[0]
 	$Answer2.text = current_case.answers[1]
 	$Answer3.text = current_case.answers[2]
@@ -43,6 +45,8 @@ func _on_answer_pressed(answer):
 		return
 	answered = true
 	if answer == current_case.correct:
+		score += 1
+		$ScoreLabel.text = "Score: " + str(score)
 		show_result(true, "Correct!")
 	else:
 		show_result(false, "Incorrect. The answer was: " + current_case.correct)
